@@ -4,9 +4,7 @@
 #include <linux/can.h>
 
 class BaseCanFrame {
-    
 public:
-
     /**
      * @brief Raw ID accessor
      * 

@@ -4,9 +4,7 @@
 #include "../Frame/CanFdFrame.hpp"
 
 class CanFdBus : public BaseCanBus {
-
 public:
-
     /**
      * @brief Construct a new Can Bus Fd object
      * 

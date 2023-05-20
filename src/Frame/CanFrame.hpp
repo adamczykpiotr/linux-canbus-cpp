@@ -3,7 +3,6 @@
 #include "BaseCanFrame.hpp"
 
 class CanFrame : public BaseCanFrame {
-
 public:
     can_frame frame;
 

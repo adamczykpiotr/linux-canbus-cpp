@@ -8,7 +8,6 @@
  * @return int 
  */
 int main() {
-
     // Initialize CanFdBus
     CanFdBus fdBus("vcan0");
     fdBus.init();

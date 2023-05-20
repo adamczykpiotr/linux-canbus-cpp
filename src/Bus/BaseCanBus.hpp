@@ -8,7 +8,6 @@
 #include <linux/can/raw.h>  // sockaddr_can, SOL_CAN_RAW
 
 class BaseCanBus {
-
 protected:
     const char * interfaceName;
     int socketFd;

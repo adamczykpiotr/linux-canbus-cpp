@@ -8,7 +8,6 @@
  * @return int 
  */
 int main() {
-
     // Initialize CanBus
     CanBus bus("vcan0");
     bus.init();
