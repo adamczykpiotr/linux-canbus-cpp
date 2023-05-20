@@ -1,5 +1,7 @@
 # linux-canbus-cpp
 
+[![CodeFactor](https://www.codefactor.io/repository/github/adamczykpiotr/linux-canbus-cpp/badge)](https://www.codefactor.io/repository/github/adamczykpiotr/linux-canbus-cpp)
+
 Small &amp; easy to use wrapper library for CAN &amp; CAN-FD
 
 ## Examples:
