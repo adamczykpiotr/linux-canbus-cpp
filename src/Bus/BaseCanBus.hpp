@@ -27,7 +27,7 @@ protected:
      * 
      */
     ~BaseCanBus() {
-        ::close(this->socketFd);
+        this->disconnect();
     }
 
 
@@ -36,7 +36,7 @@ protected:
      * 
      * @param blocking 
      */
-    void init(bool blocking = false) {
+    void connect(bool blocking = false) {
         // Connect to unix socket
         this->socketFd = socket(PF_CAN, SOCK_RAW, CAN_RAW);
         if(this->socketFd < 0) {
@@ -55,7 +55,7 @@ protected:
             throw "Unable to connect to interface";
         }
 
-        // Connection estabilished at this point
+        // Connection established at this point
         if(blocking == false) {
             return;
         }
@@ -72,6 +72,14 @@ protected:
         if (fcntl(this->socketFd, F_SETFL, flags | O_NONBLOCK) == -1) {
             throw "Unable to set non-blocking mode";
         }
+    }
+
+    /**
+     * @brief Terminates socket connection
+     */
+    void disconnect() {
+       close(this->socketFd);
+       this->socketFd = -1;
     }
 
 

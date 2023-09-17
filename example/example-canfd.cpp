@@ -10,7 +10,7 @@
 int main() {
     // Initialize CanFdBus
     CanFdBus fdBus("vcan0");
-    fdBus.init();
+    fdBus.connect();
 
     CanFdFrame fdFrame;
     while (true) {
@@ -25,6 +25,9 @@ int main() {
 
     // Re-transmit last FD frame
     fdBus.send(&fdFrame);
+
+    // Gracefully shutdown socket
+    fdBus.disconnect();
 
     return 0;
 }

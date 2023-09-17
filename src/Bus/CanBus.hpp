@@ -18,8 +18,16 @@ public:
      * 
      * @param blocking 
      */
-    void init(bool blocking = false) {
-        BaseCanBus::init(blocking);
+    inline void connect(bool blocking = false) {
+        BaseCanBus::connect(blocking);
+    }
+
+
+    /**
+     * @brief Terminates socket connection
+     */
+    inline void disconnect() {
+        BaseCanBus::disconnect();
     }
 
 

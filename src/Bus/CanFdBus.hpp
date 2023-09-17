@@ -18,14 +18,22 @@ public:
      * 
      * @param blocking 
      */
-    void init(bool blocking = false) {
-        BaseCanBus::init(blocking);
+    void connect(bool blocking = false) {
+        BaseCanBus::connect(blocking);
 
         // Add support for CAN-FD frames
         int canFdEnabled = 1;
         if (setsockopt(this->socketFd, SOL_CAN_RAW, CAN_RAW_FD_FRAMES, &canFdEnabled, sizeof(canFdEnabled))) {
             throw "error when enabling CAN FD support\n";
         }
+    }
+
+
+    /**
+     * @brief Terminates socket connection
+     */
+    inline void disconnect() {
+        BaseCanBus::disconnect();
     }
 
 
@@ -49,8 +57,9 @@ public:
      * @return false 
      */
     inline bool read(CanFdFrame *frame) {
-        return BaseCanBus::read(frame & frame->frame, CANFD_MTU);
+        return BaseCanBus::read(&frame->frame, CANFD_MTU);
     }
+
 
     /**
      * @brief Attempts to write single canfd_frame to unix socket

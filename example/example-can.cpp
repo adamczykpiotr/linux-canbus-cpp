@@ -10,7 +10,7 @@
 int main() {
     // Initialize CanBus
     CanBus bus("vcan0");
-    bus.init();
+    bus.connect();
 
     CanFrame frame;
     while (true) {
@@ -25,6 +25,9 @@ int main() {
 
     // Re-transmit last frame
     bus.send(&frame);
+
+    // Gracefully shutdown socket
+    bus.disconnect();
 
     return 0;
 }
